@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://7ck5e8cup2.execute-api.us-east-2.amazonaws.com/dev';
+    var invokeUrl = 'https://nfdg45zwq3.execute-api.us-east-2.amazonaws.com/dev';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -83,39 +83,39 @@ apigClientFactory.newClient = function (config) {
     
     
     
-    apigClient.payrollPost = function (params, body, additionalParams) {
+    apigClient.payrolldaoPost = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var payrollPostRequest = {
+        var payrolldaoPostRequest = {
             verb: 'post'.toUpperCase(),
-            path: pathComponent + uritemplate('/payroll').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/payrolldao').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(payrollPostRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(payrolldaoPostRequest, authType, additionalParams, config.apiKey);
     };
     
     
-    apigClient.payrollOptions = function (params, body, additionalParams) {
+    apigClient.payrolldaoOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var payrollOptionsRequest = {
+        var payrolldaoOptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/payroll').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/payrolldao').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(payrollOptionsRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(payrolldaoOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
 

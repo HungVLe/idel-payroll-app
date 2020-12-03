@@ -1,6 +1,5 @@
 <html>
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,10 +19,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link" href="#" onclick=window.login()>Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Register</a>
+                        <a class="nav-link" href="#" onclick=window.signup()>Register</a>
                     </li>
                 </ul>
             </div>
@@ -34,6 +33,11 @@
     <main role="main" class="container">
         <h1 class="mt-5">Payroll Application In Cloud</h1>
         <p class="lead">This application is a payroll system management built by using AWS</p>
+        <p id="demo"></p>
+        <script>
+            document.getElementById("demo").innerHTML =
+                "The full URL of this page is:<br>" + window.location.href;
+        </script>
     </main>
 
     <footer class="footer">
@@ -42,21 +46,27 @@
         </div>
     </footer>
 
-    <script src="../private/js/jquery-3.5.1.min.js"></script>
-    <script src="../private/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../private/js/apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
-    <script type="text/javascript" src="../private/js/apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
-    <script type="text/javascript" src="../private/js/apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
-    <script type="text/javascript" src="../private/js/apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
-    <script type="text/javascript" src="../private/js/apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
-    <script type="text/javascript" src="../private/js/apiGateway-js-sdk/lib/url-template/url-template.js"></script>
-    <script type="text/javascript" src="../private/js/apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
-    <script type="text/javascript" src="../private/js/apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
-    <script type="text/javascript" src="../private/js/apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
-    <script type="text/javascript" src="../private/js/apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
-    <script type="text/javascript" src="../private/js/apiGateway-js-sdk/apigClient.js"></script>
-    <script src="../private/components/site.js"></script>
+    <script src="src/js/jquery-3.5.1.min.js"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <script src="src/js/cognito/amazon-cognito-identity.min.js"></script>
+    <script src="src/js/aws/aws-sdk.min.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/apigClient.js"></script>
+    <script src="src/components/config.js"></script>
+    <script src="src/components/userAccess.js"></script>
     <script type="text/javascript">
+        $(function () {
+            checkLoginAndProfile(true, false);
+        });
     </script>
 </body>
 
