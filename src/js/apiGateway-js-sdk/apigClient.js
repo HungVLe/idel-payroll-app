@@ -118,6 +118,42 @@ apigClientFactory.newClient = function (config) {
         return apiGatewayClient.makeRequest(payrolldaoOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
+    
+    apigClient.timesheetdaoPost = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var timesheetdaoPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/timesheetdao').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(timesheetdaoPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.timesheetdaoOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var timesheetdaoOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/timesheetdao').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(timesheetdaoOptionsRequest, authType, additionalParams, config.apiKey);
+    };
+    
 
     return apigClient;
 };

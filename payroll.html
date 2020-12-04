@@ -19,13 +19,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="./home.html">Profile <span class="sr-only"></a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="./payroll.html">Payroll</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="./news.html">News</a>
                     </li>
                 </ul>
@@ -40,7 +40,7 @@
 
     <!-- Begin page content -->
     <main role="main" class="container">
-        <h1 class="mt-5">Your profile information</h1>
+        <h1 class="mt-5">Your payroll records</h1>
         <br />
         <br />
         <div class="container">
@@ -49,8 +49,20 @@
                     <h1 class="lead" id="welcome_message">Submit your time here</h1>
                     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                                aria-controls="home" aria-selected="false">Time Track</a>
+                            <a class="nav-link active" id="home-tab" href="#home" aria-controls="home"
+                                aria-selected="false">Time Track</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pending" href="./pending.html" aria-controls="home"
+                                aria-selected="false">Pending</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="approved" href="./approved.html" aria-controls="home"
+                                aria-selected="false">Approved</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="declined" href="./declined.html" aria-controls="home"
+                                aria-selected="false">Declined</a>
                         </li>
                     </ul>
                     <div class="my-4">
@@ -62,12 +74,12 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        Cots per hour:
+                                                        Pay per hour:
                                                     </td>
                                                     <td>
                                                         <input type="number" id="hour_cost" disabled>
                                                     </td>
-                                                </tr>                                                
+                                                </tr>
                                             </table>
                                         </td>
                                     </tr>
@@ -90,41 +102,41 @@
                                             <input type="date" id="date_1">
                                         </td>
                                         <td>
-                                            <input type="time" id="start_1" >
+                                            <input type="time" id="start_1">
                                         </td>
                                         <td>
-                                            <input type="time" id="end_1" >
+                                            <input type="time" id="end_1">
                                         </td>
                                         <td>
-                                            <input type="number" id="hours_1" >
-                                        </td>                                       
+                                            <input type="number" id="hours_1">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <input type="date" id="date_2">
                                         </td>
                                         <td>
-                                            <input type="time" id="start_2" >
+                                            <input type="time" id="start_2">
                                         </td>
                                         <td>
-                                            <input type="time" id="end_2" >
+                                            <input type="time" id="end_2">
                                         </td>
                                         <td>
-                                            <input type="number" id="hours_2" >
-                                        </td>                                       
+                                            <input type="number" id="hours_2">
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <input type="date" id="date_3">
                                         </td>
                                         <td>
-                                            <input type="time" id="start_3" >
+                                            <input type="time" id="start_3">
                                         </td>
                                         <td>
-                                            <input type="time" id="end_3" >
+                                            <input type="time" id="end_3">
                                         </td>
                                         <td>
-                                            <input type="number" id="hours_3" >
+                                            <input type="number" id="hours_3">
                                         </td>
                                     </tr>
                                     <tr>
@@ -132,13 +144,13 @@
                                             <input type="date" id="date_4">
                                         </td>
                                         <td>
-                                            <input type="time" id="start_4" >
+                                            <input type="time" id="start_4">
                                         </td>
                                         <td>
-                                            <input type="time" id="end_4" >
+                                            <input type="time" id="end_4">
                                         </td>
                                         <td>
-                                            <input type="number" id="hours_4" >
+                                            <input type="number" id="hours_4">
                                         </td>
                                     </tr>
                                     <tr>
@@ -146,13 +158,13 @@
                                             <input type="date" id="date_5">
                                         </td>
                                         <td>
-                                            <input type="time" id="start_5" >
+                                            <input type="time" id="start_5">
                                         </td>
                                         <td>
-                                            <input type="time" id="end_5" >
+                                            <input type="time" id="end_5">
                                         </td>
                                         <td>
-                                            <input type="number" id="hours_5" >
+                                            <input type="number" id="hours_5">
                                         </td>
                                     </tr>
                                     <tr>
@@ -160,13 +172,13 @@
                                             <input type="date" id="date_6">
                                         </td>
                                         <td>
-                                            <input type="time" id="start_6" >
+                                            <input type="time" id="start_6">
                                         </td>
                                         <td>
-                                            <input type="time" id="end_6" >
+                                            <input type="time" id="end_6">
                                         </td>
                                         <td>
-                                            <input type="number" id="hours_6" >
+                                            <input type="number" id="hours_6">
                                         </td>
                                     </tr>
                                     <tr>
@@ -174,18 +186,20 @@
                                             <input type="date" id="date_7">
                                         </td>
                                         <td>
-                                            <input type="time" id="start_7" >
+                                            <input type="time" id="start_7">
                                         </td>
                                         <td>
-                                            <input type="time" id="end_7" >
+                                            <input type="time" id="end_7">
                                         </td>
                                         <td>
-                                            <input type="number" id="hours_7" >
+                                            <input type="number" id="hours_7">
                                         </td>
                                     </tr>
                                 </table>
-                                <button type="button" class="btn btn-primary"
-                                    onclick="">Submit</button>
+                                <p class="submit">
+                                    <input name="submitButton" type="button" class="btn btn-primary" id="submitButton"
+                                        value="Submit" onClick="submitTimesheet()" />
+                                </p>
                             </form>
                         </div>
                     </div>
@@ -217,10 +231,13 @@
     <script type="text/javascript" src="src/js/apiGateway-js-sdk/apigClient.js"></script>
     <script src="src/components/config.js"></script>
     <script src="src/components/userAccess.js"></script>
-    <script src="src/components/displayProfile.js"></script>
+    <script src="src/components/submitTimesheet.js"></script>
     <script type="text/javascript">
         $(function () {
-            //displayProfile();
+            checkLogin(false, true);
+            var dataResult = getUserProfile();
+            var profile_data = JSON.parse(dataResult);
+            document.getElementById("hour_cost").value = profile_data.Item.rate
         });
     </script>
 </body>
