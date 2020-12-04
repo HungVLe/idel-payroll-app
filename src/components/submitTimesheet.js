@@ -90,7 +90,46 @@ async function createRecord(record) {
     await apigClient.timesheetdaoPost(params, body, additionalParams)
         .then(function (response) {
             console.log(response.data)
-            dataResult = response.data
+            var dataResult = response.data
+            console.log(jQuery.isEmptyObject(dataResult).toString())
+            console.log(JSON.stringify(dataResult))
+        }).catch(function (error) {
+            console.log(error)
+        })
+}
+
+async function updateRecordStatus(record_id, status) {
+    var params = {
+        'record_id': record_id
+    }
+    var body =
+    {
+        "operation": "update",
+        "payload": {
+            "TableName": "TimeSheet",
+            "Key": {
+                "record_id": record_id
+            },
+            "UpdateExpression": "set rd_status =:s",
+            "ExpressionAttributeValues": {
+                ":s": status
+            },
+            "ReturnValues": "ALL_NEW"
+        }
+    }
+
+    var additionalParams = {
+        headers: {
+
+        },
+        queryParams: {
+            'record_id': record_id
+        }
+    }
+    await apigClient.timesheetdaoPost(params, body, additionalParams)
+        .then(function (response) {
+            console.log(response.data)
+            var dataResult = response.data
             console.log(jQuery.isEmptyObject(dataResult).toString())
             console.log(JSON.stringify(dataResult))
         }).catch(function (error) {
@@ -136,7 +175,7 @@ async function getPendingRecords() {
     await apigClient.timesheetdaoPost(params, body, additionalParams)
         .then(function (response) {
             console.log(response.data)
-            dataResult = response.data
+            var dataResult = response.data
             console.log(jQuery.isEmptyObject(dataResult).toString())
             console.log(JSON.stringify(dataResult))
             printTables(dataResult)
@@ -145,7 +184,7 @@ async function getPendingRecords() {
         })
 }
 
-async function getEmployeePendingRecords(email) {
+async function getEmployeeRecordsWithStatus(email, status) {
 
     var params = {
         "emailid": email
@@ -158,7 +197,7 @@ async function getEmployeePendingRecords(email) {
             "FilterExpression": "emailid = :r and rd_status =:s",
             "ExpressionAttributeValues": {
                 ":r": email,
-                ":s": "pending"
+                ":s": status
             }
         }
     }
@@ -174,10 +213,15 @@ async function getEmployeePendingRecords(email) {
     await apigClient.timesheetdaoPost(params, body, additionalParams)
         .then(function (response) {
             console.log(response.data)
-            dataResult = response.data
+            var dataResult = response.data
             console.log(jQuery.isEmptyObject(dataResult).toString())
             console.log(JSON.stringify(dataResult))
-            printTables(dataResult)
+            if (status === 'pending') {
+                printManageTimesheet(dataResult)
+            } else {
+                printTables(dataResult)
+            }
+            
         }).catch(function (error) {
             console.log(error)
         })
@@ -214,7 +258,7 @@ async function getApprovedRecords() {
     await apigClient.timesheetdaoPost(params, body, additionalParams)
         .then(function (response) {
             console.log(response.data)
-            dataResult = response.data
+            var dataResult = response.data
             console.log(jQuery.isEmptyObject(dataResult).toString())
             console.log(JSON.stringify(dataResult))
             printTables(dataResult)
@@ -254,13 +298,145 @@ async function getDeclinedRecords() {
     await apigClient.timesheetdaoPost(params, body, additionalParams)
         .then(function (response) {
             console.log(response.data)
-            dataResult = response.data
+            var dataResult = response.data
             console.log(jQuery.isEmptyObject(dataResult).toString())
             console.log(JSON.stringify(dataResult))
             printTables(dataResult)
         }).catch(function (error) {
             console.log(error)
         })
+}
+
+function printManageTimesheet(data) {
+    var tables = $('#show_records')
+    tables.html('');
+    data.Items.forEach(function (item, i) {
+        console.log(item);
+        let li = document.createElement('li');
+        let span = document.createElement('span');
+        span.innerHTML = `
+        <div>
+            <b>Record ID </b> <i>${item.record_id}</i> </br>
+            <button type="button" class="btn btn-success btn-sm" onclick="window.location.href='https://d28torhgmcngv.cloudfront.net/timesheetAction.html?record_id=${item.record_id}&action=approved'">Approve</button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="window.location.href='https://d28torhgmcngv.cloudfront.net/timesheetAction.html?record_id=${item.record_id}&action=declined'">Decline</button>
+        </div>
+        <table border="1">
+            <tr>
+                <td>
+                    Date
+                </td>
+                <td>
+                    Start
+                </td>
+                <td>
+                    End
+                </td>
+                <td>
+                    Hours
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>${item.record_hr.day_1.date}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_1.start}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_1.end}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_1.total}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>${item.record_hr.day_2.date}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_2.start}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_2.end}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_2.total}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>${item.record_hr.day_3.date}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_3.start}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_3.end}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_3.total}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>${item.record_hr.day_4.date}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_4.start}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_4.end}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_4.total}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>${item.record_hr.day_5.date}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_5.start}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_5.end}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_5.total}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>${item.record_hr.day_6.date}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_6.start}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_6.end}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_6.total}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>${item.record_hr.day_7.date}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_7.start}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_7.end}</p>
+                </td>
+                <td>
+                    <p>${item.record_hr.day_7.total}</p>
+                </td>
+            </tr>
+        </table>`;
+        li.appendChild(span);
+        tables.append(li);
+    })
 }
 
 function printTables(data) {

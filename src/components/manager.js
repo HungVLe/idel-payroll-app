@@ -26,7 +26,7 @@ async function showEmployees() {
     await apigClient.timesheetdaoPost(params, body, additionalParams)
         .then(function (response) {
             console.log(response.data)
-            dataResult = response.data
+            var dataResult = response.data
             console.log(jQuery.isEmptyObject(dataResult).toString())
             console.log(JSON.stringify(dataResult))
             printEmployees(dataResult)

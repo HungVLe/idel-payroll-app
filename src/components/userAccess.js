@@ -158,7 +158,7 @@ async function checkProfile() {
     await apigClient.payrolldaoPost(params, body, additionalParams)
         .then(function (response) {
             console.log(response.data)
-            dataResult = response.data
+            var dataResult = response.data
             console.log(jQuery.isEmptyObject(dataResult).toString())
             console.log(JSON.stringify(dataResult))
             localStorage.setItem("user_profile_data", JSON.stringify(dataResult))
@@ -177,5 +177,7 @@ function checkManager() {
         manager.html('');
         let hyper = `<a class="nav-link" href="./manager.html">Manage</a>`;
         manager.append(hyper)
+        return true;
     }
+    return false;
 }

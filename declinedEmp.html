@@ -48,7 +48,7 @@
                     <input id="emailid" disabled style="border:none;"></input>
                     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="pending" href="#home" aria-controls="home"
+                            <a class="nav-link " id="pending" href="./employee.html" aria-controls="home"
                                 aria-selected="false">Pending</a>
                         </li>
                         <li class="nav-item">
@@ -56,7 +56,7 @@
                                 aria-selected="false">Approved</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="declined" href="./declinedEmp.html" aria-controls="home"
+                            <a class="nav-link active" id="declined" href="#home" aria-controls="home"
                                 aria-selected="false">Declined</a>
                         </li>
                     </ul>
@@ -98,15 +98,9 @@
             checkLogin(false, true);
             var isManager = checkManager()
             if (isManager === true) {
-                let emailid = localStorage.getItem("aws_session_employee_email");
-                if (emailid === null || emailid === undefined) {
-                    var urlParams = new URLSearchParams(window.location.search);
-                    emailid = urlParams.get('emailid');
-                    localStorage.setItem("aws_session_employee_email", emailid)
-                }
-
+                var emailid = localStorage.getItem("aws_session_employee_email");
                 document.getElementById("emailid").value = emailid;
-                getEmployeeRecordsWithStatus(emailid, "pending")
+                getEmployeeRecordsWithStatus(emailid, "declined")
             }
         });
     </script>
