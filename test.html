@@ -82,12 +82,11 @@
     <script type="text/javascript" src="src/js/apiGateway-js-sdk/apigClient.js"></script>
     <script src="src/components/config.js"></script>
     <script src="src/components/userAccess.js"></script>
-    <script src="src/components/site.js"></script>
     <script type="text/javascript">
         $(function () {
             var email = getUserEmail();
             document.getElementById("email").innerHTML = "User email: " + email;
-            registerDefaultProfileForNewUser()
+            checkProfile()
             var dataResult = getUserProfile()
             document.getElementById("result").innerHTML = dataResult
         });

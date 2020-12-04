@@ -71,10 +71,10 @@ function getUserEmail() {
 
 function getUserProfile() {
     var user_profile_data = localStorage.getItem("user_profile_data");
-    console.log("1231321231");
+    console.log("getUserProfile");
     console.log(user_profile_data);
     console.log(JSON.stringify(user_profile_data));
-    console.log("1231321231");
+    console.log("getUserProfile");
     return user_profile_data;
 }
 
@@ -109,13 +109,15 @@ async function checkLoginAndProfile(redirectOnRec, redirectOnUnrec) {
                 }
             } else {
                 localStorage.setItem("aws_cognito_user_email", email);
-                await registerDefaultProfileForNewUser()
+                await checkProfile()
                 var profile_data = getUserProfile()
+                console.log(profile_data)
+                console.log("cLaP " + jQuery.isEmptyObject(JSON.parse(profile_data)).toString())
 
-                if (jQuery.isEmptyObject(profile_data) === true) {
+                if (jQuery.isEmptyObject(JSON.parse(profile_data)) === true) {
                     window.location = '/profile.html';
                 } else {
-                    console.log("234234" +profile_data)
+                    console.log("cLaP" + profile_data)
                     if (redirectOnRec) {
                         window.location = '/home.html';
                     }
@@ -129,13 +131,10 @@ async function checkLoginAndProfile(redirectOnRec, redirectOnUnrec) {
     }
 }
 
-async function registerDefaultProfileForNewUser() {
+async function checkProfile() {
 
-    var emailid = getUserEmail();
+    var emailid = (!getUserEmail()) ? '1' : getUserEmail();
 
-    var formData = {
-        'emailid': emailid
-    }
     var params = {
         'emailid': emailid
     }
