@@ -5,6 +5,7 @@ async function displayProfile() {
     var dataResult = getUserProfile();
     var profile_data = JSON.parse(dataResult);
     console.log(profile_data)
+    document.getElementById("welcome_message").innerHTML = "Hello, " + profile_data.Item.firstname;
     document.getElementById("firstname").value = profile_data.Item.firstname;
     document.getElementById("lastname").value = profile_data.Item.lastname;
     document.getElementById("street").value = profile_data.Item.streetaddress;

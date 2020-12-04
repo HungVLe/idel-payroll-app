@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Payroll Application</title>
+    <link rel="stylesheet" href="src/css/bootstrap.min.css" />
+    <link href="src/css/sticky-footer-navbar.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Payroll Application</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./home.html">Profile <span class="sr-only"></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./payroll.html">Payroll</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="./news.html">News</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick=window.logout()>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="container">
+        <h1 class="mt-5">Your profile information</h1>
+        <br />
+        <br />
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+                    <h1 class="lead" id="welcome_message">Submit your time here</h1>
+                    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
+                                aria-controls="home" aria-selected="false">Time Track</a>
+                        </li>
+                    </ul>
+                    <div class="my-4">
+                        <div>
+                            <form name="form" id="form">
+                                <table>
+                                    <tr>
+                                        <td colspan="4">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        Cots per hour:
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" id="hour_cost" disabled>
+                                                    </td>
+                                                </tr>                                                
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Date
+                                        </td>
+                                        <td>
+                                            Start
+                                        </td>
+                                        <td>
+                                            End
+                                        </td>
+                                        <td>
+                                            Hours
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" id="date_1">
+                                        </td>
+                                        <td>
+                                            <input type="time" id="start_1" >
+                                        </td>
+                                        <td>
+                                            <input type="time" id="end_1" >
+                                        </td>
+                                        <td>
+                                            <input type="number" id="hours_1" >
+                                        </td>                                       
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" id="date_2">
+                                        </td>
+                                        <td>
+                                            <input type="time" id="start_2" >
+                                        </td>
+                                        <td>
+                                            <input type="time" id="end_2" >
+                                        </td>
+                                        <td>
+                                            <input type="number" id="hours_2" >
+                                        </td>                                       
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" id="date_3">
+                                        </td>
+                                        <td>
+                                            <input type="time" id="start_3" >
+                                        </td>
+                                        <td>
+                                            <input type="time" id="end_3" >
+                                        </td>
+                                        <td>
+                                            <input type="number" id="hours_3" >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" id="date_4">
+                                        </td>
+                                        <td>
+                                            <input type="time" id="start_4" >
+                                        </td>
+                                        <td>
+                                            <input type="time" id="end_4" >
+                                        </td>
+                                        <td>
+                                            <input type="number" id="hours_4" >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" id="date_5">
+                                        </td>
+                                        <td>
+                                            <input type="time" id="start_5" >
+                                        </td>
+                                        <td>
+                                            <input type="time" id="end_5" >
+                                        </td>
+                                        <td>
+                                            <input type="number" id="hours_5" >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" id="date_6">
+                                        </td>
+                                        <td>
+                                            <input type="time" id="start_6" >
+                                        </td>
+                                        <td>
+                                            <input type="time" id="end_6" >
+                                        </td>
+                                        <td>
+                                            <input type="number" id="hours_6" >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="date" id="date_7">
+                                        </td>
+                                        <td>
+                                            <input type="time" id="start_7" >
+                                        </td>
+                                        <td>
+                                            <input type="time" id="end_7" >
+                                        </td>
+                                        <td>
+                                            <input type="number" id="hours_7" >
+                                        </td>
+                                    </tr>
+                                </table>
+                                <button type="button" class="btn btn-primary"
+                                    onclick="">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Team Idel @ 2020</span>
+        </div>
+    </footer>
+
+    <script src="src/js/jquery-3.5.1.min.js"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <script src="src/js/cognito/amazon-cognito-identity.min.js"></script>
+    <script src="src/js/aws/aws-sdk.min.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/axios/dist/axios.standalone.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/CryptoJS/rollups/hmac-sha256.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/CryptoJS/rollups/sha256.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/CryptoJS/components/hmac.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/CryptoJS/components/enc-base64.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/url-template/url-template.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/apiGatewayCore/sigV4Client.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/apiGatewayCore/apiGatewayClient.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/apiGatewayCore/simpleHttpClient.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/lib/apiGatewayCore/utils.js"></script>
+    <script type="text/javascript" src="src/js/apiGateway-js-sdk/apigClient.js"></script>
+    <script src="src/components/config.js"></script>
+    <script src="src/components/userAccess.js"></script>
+    <script src="src/components/displayProfile.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //displayProfile();
+        });
+    </script>
+</body>
+
+</html>
