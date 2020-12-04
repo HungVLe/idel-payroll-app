@@ -166,3 +166,16 @@ async function checkProfile() {
             console.log(error)
         })
 }
+
+function checkManager() {
+    var dataResult = getUserProfile();
+    var profile_data = JSON.parse(dataResult);
+    console.log(profile_data)
+    var role = profile_data.Item.emp_role
+    if (role === "manager") {
+        var manager = $('#manager_tab')
+        manager.html('');
+        let hyper = `<a class="nav-link" href="./manager.html">Manage</a>`;
+        manager.append(hyper)
+    }
+}

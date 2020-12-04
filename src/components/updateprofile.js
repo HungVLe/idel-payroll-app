@@ -19,7 +19,7 @@ async function editProfile() {
 }
 
 async function updateProfile() {
-    var defaultRate = 15;
+    var defaultRate = 20;
     var defaultRole = "employee";
     console.log("updateProfile " + document.getElementById('email').value)
     console.log("updateProfile " + $('#firstname').val())

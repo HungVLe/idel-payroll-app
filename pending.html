@@ -25,9 +25,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="./payroll.html">Payroll</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./news.html">News</a>
-                    </li>
+                    <li class="nav-item" id="manager_tab"></li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -46,7 +44,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-10 col-xl-8 mx-auto">
-                    <h1 class="lead" id="welcome_message">Submit your time here</h1>
+                    <h1 class="lead" id="welcome_message">Your pending records</h1>
                     <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link" id="home-tab" href="./payroll.html" aria-controls="home"
@@ -101,6 +99,7 @@
         $(function () {
             checkLogin(false, true);
             getPendingRecords()
+            checkManager()
         });
     </script>
 </body>

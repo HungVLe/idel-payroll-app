@@ -145,6 +145,44 @@ async function getPendingRecords() {
         })
 }
 
+async function getEmployeePendingRecords(email) {
+
+    var params = {
+        "emailid": email
+    }
+    var body =
+    {
+        "operation": "list",
+        "payload": {
+            "TableName": "TimeSheet",
+            "FilterExpression": "emailid = :r and rd_status =:s",
+            "ExpressionAttributeValues": {
+                ":r": email,
+                ":s": "pending"
+            }
+        }
+    }
+
+    var additionalParams = {
+        headers: {
+
+        },
+        queryParams: {
+            "emailid": email
+        }
+    }
+    await apigClient.timesheetdaoPost(params, body, additionalParams)
+        .then(function (response) {
+            console.log(response.data)
+            dataResult = response.data
+            console.log(jQuery.isEmptyObject(dataResult).toString())
+            console.log(JSON.stringify(dataResult))
+            printTables(dataResult)
+        }).catch(function (error) {
+            console.log(error)
+        })
+}
+
 async function getApprovedRecords() {
     var email = getUserEmail();
     //var email = "123456"
