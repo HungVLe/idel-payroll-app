@@ -28,6 +28,7 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="./news.html">News</a>
                     </li>
+                    <li class="nav-item" id="manager_tab"></li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
@@ -39,8 +40,10 @@
     </header>
 
     <!-- Begin page content -->
-    <main role="main" class="container">
-        <p>Still under development</p>
+    <main role="main" class="container justify-content-center">
+        <a class="twitter-timeline" data-theme="dark" href="https://twitter.com/hle_sjsu?ref_src=twsrc%5Etfw">Tweets by
+            hle_sjsu</a>
+
     </main>
 
     <footer class="footer">
@@ -66,10 +69,11 @@
     <script type="text/javascript" src="src/js/apiGateway-js-sdk/apigClient.js"></script>
     <script src="src/components/config.js"></script>
     <script src="src/components/userAccess.js"></script>
-    <script src="src/components/displayProfile.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script type="text/javascript">
         $(function () {
-            //displayProfile();
+            checkLogin(false, true);
+            checkManager()
         });
     </script>
 </body>
